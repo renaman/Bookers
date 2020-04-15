@@ -1,37 +1,37 @@
-<div class="body">
-		<div class="container">
-			<p id="notice"></p>
-			<div class="row">
-				<div class="col-xs-3">
-					<h2>User info</h2>
-					<img class="attachment user profile_image fallback: no_image.jpg">
-					<table class="table">
-						<tr></tr>
-						<tr>
-							<th>name</th>
-							<th>sample</th>
-						</tr>
-					</table>
-					<div class="row">
-						<a class="col-xs-12btn-default glyphicon glyphicon-wrench edit_user_id" href="">
-						</a>
-					</div>
-					<form class="new_book" id="new_book" action="/books" accept-charset="UTF-8" method="post">
-						<input name="utf8" type="hidden">
-						<input type="hidden" name="authenticity_token">
-						<div class="field row">
-							<label for="book_title">Title</label>
-							<input class="col-xs-12 book_titlebook_title" type="text" name="book[title]" id="book_title">
-						</div>
-						<div class="field row">
-							<label for="book_opinion">Opinion</label>
-							<textarea class="col-xs-12 book_body" name="book[body]" id="book_body"></textarea>
-						</div>
-						<div class="actions row">
-							<input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book">
-						</div>
-					</form>
-				</div>
-			</div>
+
+			
+<div class="col-xs-3">
+	<h2>User info</h2>
+		<div class="profile_image">
+			<%= attachment_image_tag user,:profile_image, fallback: "no-image.png",size:'80x80' %>
 		</div>
-	</div>
+		<table class="table">
+			<tr></tr>
+			<tr>
+				<th>name</th>
+				<th>sample</th>
+			</tr>
+			<tr>
+				<th>introduction</th>
+				<th><%= user.introduction %></th>
+			</tr>
+		</table>
+		<%= link_to edit_user_path(current_user),class: 'btn btn-default col-xs-12' do %>
+			<div class="glyphicon glyphicon-wrench", class:btn btn-default>
+			</div>
+		<% end %>
+		<h2>New book</h2>
+		<%= form_for(@book) do |f| %>
+			<div class="title-name">Title</div>
+				<%= f.text_field :title, class:"col-xs-12" %>
+			<div class="opinion">Opinion</div>
+				<%= f.text_area :opinion, class:"col-xs-12" %>
+			<div class="create_book">
+				<%= f.submit "Create Book" ,class:"btn btn-primary col-xs-12 data-disable-with" %>
+			</div>
+		<% end %>
+</div>
+
+
+			
+		

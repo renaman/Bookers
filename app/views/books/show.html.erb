@@ -1,0 +1,31 @@
+<div class="body">
+	<div class="container">
+		<div class="row">
+		<%= render 'list', books:@books,user:@user %>
+		<div class="col-xs-9">
+			<h2>Book detail</h2>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							<%= attachment_image_tag user,:profile_image, fallback: "no-image.png",size:'20x20' %>
+					         <% @books.each do |book| %>
+					             <tr>
+									<td>
+						   				<%= attachment_image_tag @plofile_image, :image %>
+									</td>
+									<td>
+										<%= book.title %>
+									</td>
+									<td>
+										<%= book.opinion %>
+									</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
