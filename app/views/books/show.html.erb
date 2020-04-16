@@ -1,31 +1,42 @@
 <div class="body">
 	<div class="container">
 		<div class="row">
-		<%= render 'list', books:@books,user:@user %>
-		<div class="col-xs-9">
-			<h2>Book detail</h2>
-			<table class="table">
-				<tbody>
-					<tr>
-						<td>
-							<%= attachment_image_tag user,:profile_image, fallback: "no-image.png",size:'20x20' %>
-					         <% @books.each do |book| %>
-					             <tr>
+			<%= render 'list', book: @book %>
+				<div class="col-xs-9">
+					<h2>Book detail</h2>
+						<table class="table">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Title</th>
+									<th>Opinion</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
 									<td>
-						   				<%= attachment_image_tag @plofile_image, :image %>
+										<%= attachment_image_tag @bookd.user,:profile_image, fallback: "no-image.png",size:'30x30' %><br>
+										<%= link_to @bookd.user.name, user_path(@bookd.user) %>
+								    </td>
+									<td>
+										<%= @bookd.title %>
 									</td>
 									<td>
-										<%= book.title %>
+										<%= @bookd.body %>
 									</td>
-									<td>
-										<%= book.opinion %>
+										<% if @bookd.user == current_user %>
+											<td>
+												<%= link_to "edit", edit_book_path, class: "btn btn-success" %>
+											</td>
+											<td>
+												<%= link_to "destroy", book_path(@bookd), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger" %>
+											</td>
+										<% end %>
 									</td>
 								</tr>
-							<% end %>
-						</tbody>
-					</td>
-				</tr>
-			</table>
+							</tbody>
+						</table>
+				</div>
 		</div>
 	</div>
 </div>

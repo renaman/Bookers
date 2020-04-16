@@ -17,15 +17,13 @@
 					<% @books.each do |book| %>
 					<tr>
 						<td>
-							<a href="#">
-								<%= attachment_image_tag @plofile_image, :image %>
-							</a>
+								<%= attachment_image_tag @user,:profile_image, fallback: "no-image.png",size:'30x30' %>
 						</td>
 						<td>
-							<% book.title %>
+							<%= book.title %>
 						</td>
 						<td>
-							<% book.opinion %>
+							<%= book.body %>
 						</td>
 					</tr>
 					<% end %>
@@ -35,4 +33,4 @@
 	</div>
 	</div>
 </div>
-
+　
