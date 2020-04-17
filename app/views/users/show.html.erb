@@ -4,7 +4,7 @@
 		<%= render 'books/list', books:@books,user:@user %>
 		<div class="col-xs-9">
 			<h2>Books</h2>
-			<table class="table">
+			<table class="table table-hover">
 				<thead>	
 					<tr>
 						<th></th>
@@ -20,7 +20,7 @@
 								<%= attachment_image_tag @user,:profile_image, fallback: "no-image.png",size:'30x30' %>
 						</td>
 						<td>
-							<%= book.title %>
+							<%= link_to book.title, book_path %>
 						</td>
 						<td>
 							<%= book.body %>

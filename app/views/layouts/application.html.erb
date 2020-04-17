@@ -46,7 +46,18 @@
       </nav>
     </div>
   </header>
+    </div>
   <%= yield %>
+  <%= form_for(@book) do |f| %>
+            <% if @book.errors.any? %>
+                <h3><%= @book.errors.count %>error occurrence</h3>
+                  <ul>
+                    <% @book.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+          <% end %>
+    <% end %>
   <footer>
     <div class="container">
       <div class="row">

@@ -1,10 +1,19 @@
-<div class="container container-box">
-		<h1>Edditing Book</h1>
+<div class="body">
+	<div class="container">
+		<div class="edit-box col-md-offset-3 col-md-6">
+				<h1>Edditing Book</h1>
 	        <%= form_for(@book) do |f| %>
 	        	<div class="title-name">Title</div>
-                    <%= f.text_field :title %>
-	        	    	<div class="body">Body</div>
-	        	    <%= f.text_area :body %>
-	        	    <%= f.submit "Update Book" %>
-	        <% end %>		
+                    <%= f.text_field :title, class: 'title-field control-label col-xs-12' %>
+	        	<div class="opinion">Opinion</div>
+	        	    <%= f.text_area :body, class: 'body-field control-label col-xs-12' %>
+	        	    <%= f.submit "Update Book", class: "button btn btn-primary col-xs-12"%>
+	        <% end %>
+	       
+	        <%= link_to "Show", book_path(@book), :style=>"color: #666666;" %>
+	        |
+	        <%= link_to "Back", books_path, :style=>"color: #666666;" %>
+	        
+	    </div>
+	</div>	
 </div>
